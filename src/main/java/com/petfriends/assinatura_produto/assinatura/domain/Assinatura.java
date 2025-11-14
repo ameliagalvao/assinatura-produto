@@ -66,6 +66,8 @@ public class Assinatura {
         }
     }
 
+
+
     public void cancelar() {
         if (this.status == StatusAssinatura.CANCELADA) {
             throw new IllegalStateException("Assinatura já está cancelada.");
