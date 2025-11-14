@@ -22,7 +22,7 @@ public class AssinaturaCriadaPayload extends EventoDeDominio {
             int quantidade,
             String frequenciaEntrega
     ) {
-        super("AssinaturaCriada");
+        super();
         this.assinaturaId = assinaturaId;
         this.clienteId = clienteId;
         this.produtoId = produtoId;

@@ -6,9 +6,9 @@ public abstract class EventoDeDominio {
     private final Instant dataHoraCriacao;
     private final String tipoDoEvento;
 
-    protected EventoDeDominio(String tipoDoEvento) {
+    protected EventoDeDominio() {
         this.dataHoraCriacao = Instant.now();
-        this.tipoDoEvento = tipoDoEvento;
+        this.tipoDoEvento = this.getClass().getSimpleName();
     }
 
     public Instant getDataHoraCriacao() {
