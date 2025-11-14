@@ -2,6 +2,7 @@ package com.petfriends.assinatura_produto.assinatura.infra;
 
 import com.petfriends.assinatura_produto.assinatura.domain.Assinatura;
 import com.petfriends.assinatura_produto.assinatura.domain.FrequenciaEntrega;
+import com.petfriends.assinatura_produto.assinatura.event.AssinaturaCriadaPayload;
 import com.petfriends.assinatura_produto.assinatura.event.EventoDeDominioPublisher;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,8 @@ public class AssinaturaService {
     public Assinatura criarAssinatura(UUID clienteId, UUID produtoId, int quantidade, FrequenciaEntrega frequencia) {
         Assinatura assinatura = new Assinatura(clienteId, produtoId, quantidade, frequencia);
         repository.save(assinatura);
-        publisher.publicarAssinaturaCriada(assinatura);
+        AssinaturaCriadaPayload evento = AssinaturaCriadaPayload.criarPayload(assinatura);
+        publisher.publicarEventoDeDominio(evento);
         return assinatura;
     }
 
