@@ -7,14 +7,13 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Getter
-public class AssinaturaCriadaPayload {
+public class AssinaturaCriadaPayload extends EventoDeDominio {
 
     private final UUID assinaturaId;
     private final UUID clienteId;
     private final UUID produtoId;
     private final int quantidade;
     private final String frequenciaEntrega;
-    private final Instant dataHoraCriacao;
 
     public AssinaturaCriadaPayload(
             UUID assinaturaId,
@@ -23,12 +22,12 @@ public class AssinaturaCriadaPayload {
             int quantidade,
             String frequenciaEntrega
     ) {
+        super("AssinaturaCriada");
         this.assinaturaId = assinaturaId;
         this.clienteId = clienteId;
         this.produtoId = produtoId;
         this.quantidade = quantidade;
         this.frequenciaEntrega = frequenciaEntrega;
-        this.dataHoraCriacao = Instant.now();
     }
 
     public static AssinaturaCriadaPayload criarPayload(Assinatura assinatura) {
